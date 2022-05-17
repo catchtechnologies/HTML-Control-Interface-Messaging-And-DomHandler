@@ -1,0 +1,301 @@
+<html>
+  <head>
+    <!--Import CSS-->
+    <link type="text/css" rel="stylesheet" href="/css/fonts.css" />
+    <link type="text/css" rel="stylesheet" href="/css/layout.css" />
+    <link type="text/css" rel="stylesheet" href="/css/blocks.css" />
+    <link type="text/css" rel="stylesheet" href="/css/elements.css" />
+    <link type="text/css" rel="stylesheet" href="/css/colors.css" />
+    <link type="text/css" rel="stylesheet" href="/css/image-buttons.css" />
+    <link type="text/css" rel="stylesheet" href="/css/av-icons.css" />
+    <link type="text/css" rel="stylesheet" href="/css/custom.css" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="/js/controller-integration/domhandler.css"
+    />
+  </head>
+  <body class="mdc-bg-blue-grey-900">
+    <div class="layout">
+      <div class="main background">
+
+      <div class="example-cell">
+        <h2>Active </h2>
+        <button
+          class="img-btn img-btn-rect img-btn-rect-large icon-btn-rect mdc-text-blue-grey-50 margin-bottom-20"
+          data-button-channel="matrix.input"
+          data-pointerdown-value="1"
+          data-active-channel="laptop.active"
+          data-active-value="1"
+        >
+          <i class="av-icon-input-laptop av-icon-small"></i>
+          <div>
+            <p>Laptop</p>
+          </div>
+        </button>
+        <div>
+        <button id="activeTest" >Make Active</button>
+        <button id="inactiveTest" >Make Inactive</button>
+      </div>
+      </div>
+
+      <div class="example-cell">
+        <h2>Disabled </h2>
+        <button
+          class="img-btn img-btn-rect img-btn-rect-large icon-btn-rect mdc-text-blue-grey-50 margin-bottom-20"
+          data-button-channel="matrix.input"
+          data-pointerdown-value="2"
+          data-disabled-channel="hdmi.disable"
+          data-disabled-value="1"
+        >
+          <i class="av-icon-input_hdmi av-icon-small"></i>
+          <div>
+            <p>HDMI</p>
+          </div>
+        </button>
+        <div>
+        <button id="disableTest" >Disable</button>
+        <button id="enableTest" >Enable</button>
+      </div>
+      </div>
+
+      <div class="example-cell">
+        <h2>Hidden </h2>
+        <button
+          class="img-btn img-btn-rect img-btn-rect-large icon-btn-rect mdc-text-blue-grey-50 margin-bottom-20"
+          data-button-channel="matrix.input"
+          data-pointerdown-value="3"
+          data-hidden-channel="computer.hidden"
+          data-hidden-value="1"
+        >
+          <i class="av-icon-pc av-icon-small"></i>
+          <div>
+            <p>Computer</p>
+          </div>
+        </button>
+        <div>
+        <button id="hideTest" >Hide</button>
+        <button id="unhideTest" >Unhide</button>
+      </div>
+      </div>
+
+      <div class="example-cell">
+        <h2>Invisible </h2>
+        <button
+          class="img-btn img-btn-rect img-btn-rect-large icon-btn-rect mdc-text-blue-grey-50 margin-bottom-20"
+          data-button-channel="matrix.input"
+          data-pointerdown-value="4"
+          data-invisible-channel="conference.invisible"
+          data-invisible-value="1"
+        >
+          <i class="av-icon-confroom av-icon-small"></i>
+          <div>
+            <p>Conference</p>
+          </div>
+        </button>
+        <div>
+        <button id="invisibleTest" >Make invisible</button>
+        <button id="visibleTest" >Make visible</button>
+      </div>
+      </div>
+
+      <div class="example-cell">
+        <h2>Inner HTML </h2>
+        <button
+          class="img-btn img-btn-rect img-btn-rect-large icon-btn-rect mdc-text-blue-grey-50 margin-bottom-20"
+          data-button-channel="lights"
+          data-pointerdown-value="on"
+        >
+          <i class="av-icon-bulb-1 av-icon-small"></i>
+          <div>
+            <p>Lights On</p>
+            <p class="example-button-info" data-inner-html-channel="lights.info"></p>
+          </div>
+        </button>
+        <div>
+        <button id="innerHtmlTest1" >Set Text To "50%"</button>
+        <button id="innerHtmlTest2" >Set Text To "100%"</button>
+      </div>
+      </div>
+
+      <div class="example-cell">
+        <h2>CSS Style </h2>
+        <button
+          class="img-btn img-btn-rect img-btn-rect-large icon-btn-rect mdc-text-blue-grey-50 margin-bottom-20"
+          data-button-channel="lights"
+          data-pointerdown-value="off"
+          data-style-channel="lights.off.style"
+        >
+          <i class="av-icon-bulb-2 av-icon-small"></i>
+          <div>
+            <p>Lights Off</p>
+          </div>
+        </button>
+        <div>
+        <button id="styleTest1" >Set color: red</button>
+        <button id="styleTest2" >Set color: white</button>
+      </div>
+      </div>
+
+      <div class="example-cell">
+        <h2>Text Input </h2>
+        <div >
+          <input
+          id="test"
+            data-text-channel="example.input.text"
+            type="text"
+            aria-label="Text Input "
+            placeholder="Enter Text & Press Enter"
+            value="Intial text"
+          />
+        </div>
+        <label data-channel="example.text.input"></label>
+      </div>
+
+        <div class="example-cell">
+          <h2>Number Input </h2>
+          <div >
+            <input
+              data-number-channel="example.input.number"
+              type="number"                
+              placeholder="Enter A Number"
+              aria-label="Number Input "
+            />
+          </div>
+        </div>
+
+        <div class="example-cell">
+          <h2>Range Input </h2>
+          <div>
+            <input
+            data-range-channel="example.input.range"
+            type="range"
+            placeholder="Select A Value"
+            aria-label="Range Input "
+          />
+          </div>
+        </div>          
+      
+
+      
+        <div class="example-cell">
+          <h2>MCSA </h2>
+          <p>Multilple Choice Single Answer</p>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              data-mcsa-channel="example.mcsa"
+              type="radio"
+              name="exampleRadios"
+              id="exampleRadios1"
+              value="option1"
+            />
+            <label class="form-check-label" for="exampleRadios1">
+              Option 1
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              data-mcsa-channel="example.mcsa"
+              type="radio"
+              name="exampleRadios"
+              id="exampleRadios2"
+              value="option2"
+
+            />
+            <label class="form-check-label" for="exampleRadios2">
+              Option 2
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              data-mcsa-channel="example.mcsa"
+              type="radio"
+              name="exampleRadios"
+              id="exampleRadios3"
+              value="option3"
+            />
+            <label class="form-check-label" for="exampleRadios3">
+              Option 3
+            </label>
+          </div>
+        </div>
+
+        <div class="example-cell">
+          <h2>MCMA </h2>
+          <p>Multilple Choice Multiple Answer</på>
+          <div class="input-group">
+            <div class="form-check">
+              <input
+                data-checkbox-channel="example.mcma.option1"
+                class="form-check-input"
+                type="checkbox"
+                value="option1"
+                id="option1"
+              />
+              <label class="form-check-label" for="defaultCheck1">
+                Option 1
+              </label>
+              <input
+                data-checkbox-channel="example.mcma.option2"
+                class="form-check-input"
+                type="checkbox"
+                value="option2"
+                id="option2"
+              />
+              <label class="form-check-label" for="defaultCheck1">
+                Option 2
+              </label>
+              <input
+                data-checkbox-channel="example.mcma.option3"
+                class="form-check-input"
+                type="checkbox"
+                value="option3"
+                id="option3"
+              />
+              <label class="form-check-label" for="defaultCheck1">
+                Option 3
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="example-cell">
+          <h2>Select </h2>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1"> select</label>
+            <select
+              class="form-control"
+              id="exampleFormControlSelect1"
+              data-select-channel="example.select"
+            >
+              <option value="option1">Option 1</option>
+              <option value="option2">Option 2</option>
+              <option value="option3">Option 3</option>
+              <option value="option4">Option 4</option>
+              <option value="option5">Option 5</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    
+
+    <div>
+      <div class="messages">
+        <p class="margin-left-10 margin-right-10"><u>Sent To DOM</u> </p>
+        Channel: <pre id="domhandler-tx-ch" class="margin-left-10 margin-right-10">test</pre>&nbsp; &nbsp; 
+        Value: <pre id="domhandler-tx-value" class="margin-left-10 margin-right-10">test</pre>
+      </div>
+      <div class="messages">
+        <p class="margin-left-10 margin-right-10"><u>Received From Messaging</u></p>        
+        Channel: <pre id="domhandler-rx-ch" class="margin-left-10 margin-right-10">test</pre>&nbsp; &nbsp; 
+        Value: <pre id="domhandler-rx-value" class="margin-left-10 margin-right-10">test</pre>
+      </div>
+    </div>
+
+    <!-- Load JavaScript -->
+    <script type="module" src="/js/main.js"></script>
+  </body>
+</html>
