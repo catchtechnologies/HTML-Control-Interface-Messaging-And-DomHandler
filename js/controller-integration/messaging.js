@@ -86,8 +86,10 @@ function startWebSocket(channels) {
         connection.send("pong");
         return;
       }
+      if (m.data === "connected") {
+        return;
+      }
       try {
-        console.log(m.data);
         const message = JSON.parse(m.data);
         if (message.action && message.options) {
           switch (message.action) {

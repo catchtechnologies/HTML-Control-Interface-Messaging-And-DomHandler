@@ -2,6 +2,18 @@
 
 Connects HTML elements to a channel/value messaging system.
 
+- [Overview](#overview)
+- [Usage](#usage)
+  - [Usage Example](#usage-example)
+- [DomHandler](#domhandler)
+  - [HTML Inputs & Input Events](#html-inputs--input-events)
+  - [Update HTML Element Attributes](#update-html-element-attributes)
+  - [Callbacks](#callbacks)
+- [Messaging](#messaging)
+  - [Keep Alive Heartbeat](#keep-alive-heartbeat)
+  - [Action Messages](#action-messages)
+- [Go Deeper... Integrating With Automation & Control Systems](#integrating-with-automation--control-systems)
+
 ## Overview
 
 A group of `Messaging` functions in `messaging.js` creates a websocket connection with the server to send and receive messages.
@@ -21,7 +33,7 @@ The `DomHandler` class in `domhandler.js` detects and parses DOM events and send
   `<script src="js/controller-integration/messaging.js" type="module"></script>`
 - Add the desired `data-` tags to your HTML elements.
 
-## Example
+### Usage Example
 
 ```Javascript
 import DomHandler from "./js/controller-integration/domhandler.js";
@@ -57,12 +69,12 @@ HTML inputs can be used to send a channel/value message to the webserver over th
 
 The `data-INPUT_TYPE-channel` tag dictates the input type and the channel to publish the message on. Either a `data-EVENT-value` tag or the `value` tag indicates the value to send for a particular input event. Supported input types are:
 
-- button
-- checkbox
-- mcsa
-- number
-- range
-- select
+- [button](#button-input)
+- [checkbox](#checkbox-input)
+- [mcsa](#mcsa-input)
+- [number](#number-input)
+- [range](#range-input)
+- [select](#select-input)
 
 ### Button Input
 
@@ -247,14 +259,14 @@ The `data-ATTRIBUTE-channel` tag dictates the attribute to update. The `data-ATT
 
 Supported updates are:
 
-- active
-- disabled
-- hidden
-- invisible
-- inner-html
-- style
+- [active](#active-update)
+- [disabled](#disabled-update)
+- [hidden](#hidden-update)
+- [invisible](#invisible-update)
+- [inner-html](#inner-html-update)
+- [style](#style-attribute-update)
 
-### Active
+### Active Update
 
 Adds the `active` class to the element if the values match and removes the `active` class to the element if the values do not match.
 
@@ -274,7 +286,7 @@ In this example, a message with channel `my.active.channel` and a value of `1` a
 <button data-active-channel="my.active.channel" data-active-value="1">Active Button</button>
 ```
 
-### Disabled
+### Disabled Update
 
 Adds the `disabled` attribute if the values match and removes the `disabled` attribute of the element if the values do not match.
 
@@ -294,7 +306,7 @@ In this example, a message with channel `my.disabled.channel` and a value of `1`
 <button data-disabled-channel="my.disabled.channel" data-disabled-value="1">Disabled Button</button>
 ```
 
-### Hidden
+### Hidden Update
 
 Adds the `hidden="true"` attribute if the values match and removes the `hidden="true"` attribute of the element if the values do not match.
 
@@ -316,7 +328,7 @@ In this example, a message with channel `my.hidden.channel` and a value of `1` a
 <button data-hidden-channel="my.hidden.channel" data-hidden-value="1">Hidden Button</button>
 ```
 
-### Invisible
+### Invisible Update
 
 Adds the `display:none` css style if the values match and removes the `display:none` css style from the element if the values do not match.
 
@@ -348,7 +360,7 @@ In this example, a message with channel `my.invisible.channel` and a value of `1
 <button data-invisible-channel="my.invisible.channel" data-invisible-value="1">Invisible Button</button>
 ```
 
-### Inner HTML
+### Inner HTML Update
 
 Sets the element's `innerHTML` to the message's value.
 
@@ -368,7 +380,7 @@ In this example, the text `Inner HTML Button` is replaced with the value of any 
 <button data-inner-html-channel="my.inner-html.channel">Inner HTML Button</button>
 ```
 
-### Style Attribute
+### Style Attribute Update
 
 Adds one or more CSS properties to the element's `style` attribute.
 
@@ -417,11 +429,17 @@ domHandler = new DomHandler(
 
 All messages excluding the `keep alive heartbeat` are a JSON formatted string with an `action` and `options` key.
 
-## Subscribe Action
+## Keep Alive Heartbeat
+
+`Messaging` sends the string `pong` whenever the string `ping` is received.
+
+## Action Messages
+
+### Subscribe Action
 
 After successfully connecting the websocket, a subscribe message is sent with an array of channels that the HTML project contains. The server can use this message to send back an update with the current value of each channel and updates whenever the value for a channel changes.
 
-### Example Subscribe Action
+#### Example Subscribe Action
 
 Sent to the server.
 
@@ -432,15 +450,11 @@ Sent to the server.
 }
 ```
 
-## Keep Alive Heartbeat
-
-`Messaging` sends the string `pong` whenever the string `ping` is received.
-
-## Registration Action
+### Registration Action
 
 The server can assign an unique identifier to the websocket connection with the `Registration Action`. The id will then be sent with every `Publish Action`.
 
-### Example Registration Action
+#### Example Registration Action
 
 Sent from the server.
 
@@ -453,11 +467,11 @@ Sent from the server.
 }
 ```
 
-## Update Action
+### Update Action
 
 `Update Action`s are received over the websocket and passed to the `DomHandler` to update HTML elements.
 
-### Example Update Action
+#### Example Update Action
 
 Sent from the server. Can be a single message or an array.
 
@@ -484,11 +498,11 @@ Sent from the server. Can be a single message or an array.
 }
 ```
 
-## Publish Action
+### Publish Action
 
 After `DomHandler` detects and parses an HTML DOM event, the resulting message is sent to the server over the websocket.
 
-## Example Publish Action
+#### Example Publish Action
 
 ```JSON
 {
@@ -500,3 +514,8 @@ After `DomHandler` detects and parses an HTML DOM event, the resulting message i
   },
 };
 ```
+
+## Integrating With Automation & Control Systems
+
+Here is a blog post covering how this project can be integrated as part of a larger automation & control system.
+https://www.learnavprogramming.com/html5-part-i/

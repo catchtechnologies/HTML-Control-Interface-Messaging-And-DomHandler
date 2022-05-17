@@ -27,6 +27,7 @@ function start() {
       }
     );
 
+    // Simulate Messaging messages from button presses in index.html
     var activeTest = document.getElementById("activeTest");
     activeTest.onpointerdown = () => {
       domHandler.handleUpdate("laptop.active", "1");
